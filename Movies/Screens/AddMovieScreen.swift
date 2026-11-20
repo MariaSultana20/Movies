@@ -22,7 +22,9 @@ struct AddMovieScreen: View {
         Form {
             TextField("Movie title", text: $title)
             TextField("Release year", value: $year, format: .number)
-        }.toolbar {
+        }
+        .navigationTitle(Text("Add Movie"))
+        .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Cancel") {
                     dismiss()
