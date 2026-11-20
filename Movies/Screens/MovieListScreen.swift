@@ -9,13 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct MovieListScreen: View {
-    @Query(sort: \Movie.title, order: .reverse) var movies: [Movie]
-    @State var isAddMovieScreenPresented: Bool = false
+    @Query(sort: \Movie.title, order: .forward) private var movies: [Movie]
+    @State private var isAddMovieScreenPresented: Bool = false
     
     var body: some View {
-        List(movies) { movie in
-            Text(movie.title)
-        }
+        MovieListView(movies: movies)
         .toolbar {
             ToolbarItem {
                 Button("Add Movie") {
