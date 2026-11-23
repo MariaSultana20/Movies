@@ -12,8 +12,11 @@ struct AddMovieScreen: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
+    @Query(sort: \Actor.name, order: .forward) private var actors: [Actor]
+    
     @State var title: String = ""
     @State var year: Int?
+    @State private var selectedActors: Set<Actor> = []
     
     private var isFormValid: Bool {
         !title.isEmptyOrWhiteSpace
@@ -22,6 +25,9 @@ struct AddMovieScreen: View {
         Form {
             TextField("Movie title", text: $title)
             TextField("Release year", value: $year, format: .number)
+            Section("Select Actors") {
+                ActorSelectionView(selectedActors: $selectedActors)
+            }
         }
         .navigationTitle(Text("Add Movie"))
         .toolbar {
@@ -33,7 +39,9 @@ struct AddMovieScreen: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Save") {
                     let movie = Movie(title: title, year: year ?? 0)
+                    movie.actors = Array(selectedActors)
                     modelContext.insert(movie)
+                    
                     do {
                         try modelContext.save()
                     } catch {

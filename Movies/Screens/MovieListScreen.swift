@@ -12,6 +12,8 @@ struct MovieListScreen: View {
     @Environment(\.modelContext) private var modelContext
 
     @Query(sort: \Movie.title, order: .forward) private var movies: [Movie]
+    @Query(sort: \Actor.name, order: .forward) private var actors: [Actor]
+    
     @State private var isAddActorPresented: Bool = false
     @State private var isAddMovieScreenPresented: Bool = false
     @State private var actorName: String = ""
@@ -19,11 +21,25 @@ struct MovieListScreen: View {
     private func saveActor() {
         let actor = Actor(name: actorName)
         modelContext.insert(actor)
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("Actor: \(error.localizedDescription)")
+        }
+        actorName = ""
     }
     
     var body: some View {
-        MovieListView(movies: movies)
-        .navigationTitle("Movie Lists")
+        VStack(alignment: .leading) {
+            Text("Movies")
+                .font(.largeTitle)
+            MovieListView(movies: movies)
+            Text("Actors")
+                .font(.largeTitle)
+            ActorListView(actors: actors)
+        }
+        .padding()
         .toolbar {
             ToolbarItem(placement: .topBarLeading){
                 Button("Add Actor") {

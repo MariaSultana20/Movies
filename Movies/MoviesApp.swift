@@ -14,7 +14,7 @@ struct MoviesApp: App {
         WindowGroup {
             NavigationStack {
                 MovieListScreen()
-            }.modelContainer(for: [Movie.self])
+            }.modelContainer(for: [Movie.self, Actor.self])
         }
     }
 }
