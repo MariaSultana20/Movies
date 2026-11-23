@@ -50,7 +50,9 @@ struct MovieDetailsScreen: View {
             
             Section("Actors") {
                 if !movie.actors.isEmpty {
-                    ActorListView(actors: movie.actors)
+                    List(movie.actors) { actor in
+                        ActorCellView(actor: actor)
+                    }
                 } else {
                     ContentUnavailableView {
                         Text("No actors yet")
