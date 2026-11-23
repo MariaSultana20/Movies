@@ -39,7 +39,7 @@ struct MovieListView: View {
             .onDelete(perform: deleteMovie)
         }
         .navigationDestination(for: Movie.self) { movie in
-            EditMovieScreen(movie: movie)
+            MovieDetailsScreen(movie: movie)
         }
     }
 }
