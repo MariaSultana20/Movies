@@ -40,8 +40,12 @@ struct AddMovieScreen: View {
                 Button("Save") {
                     let movie = Movie(title: title, year: year ?? 0)
                     movie.actors = Array(selectedActors)
-                    modelContext.insert(movie)
                     
+                    selectedActors.forEach { actor in
+                        actor.movies.append(movie)
+                    }
+                    
+                    modelContext.insert(movie)
                     do {
                         try modelContext.save()
                     } catch {
