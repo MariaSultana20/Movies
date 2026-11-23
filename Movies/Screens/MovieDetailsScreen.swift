@@ -40,13 +40,7 @@ struct MovieDetailsScreen: View {
                 }
                 
                 if let reviews = movie.reviews, !reviews.isEmpty {
-                    List(reviews) { review in
-                        HStack {
-                            Text(review.subject)
-                            Spacer()
-                            Text(review.body)
-                        }
-                    }
+                    ReviewListView(reviews: reviews)
                 } else {
                     ContentUnavailableView {
                         Text("No reviews yet")
