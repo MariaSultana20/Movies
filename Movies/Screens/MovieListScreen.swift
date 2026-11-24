@@ -12,7 +12,7 @@ enum Sheet: Identifiable {
     var id: Int {
         hashValue
     }
-    
+
     case addMovie
     case addActor
     case filter
@@ -26,6 +26,7 @@ struct MovieListScreen: View {
     
     @State private var sheetType: Sheet?
     @State private var actorName: String = ""
+    @State private var filterOption: FilterOption = .none
     
     private func saveActor() {
         let actor = Actor(name: actorName)
@@ -41,9 +42,15 @@ struct MovieListScreen: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Movies")
-                .font(.largeTitle)
-            MovieListView(movies: movies)
+            HStack(alignment: .firstTextBaseline) {
+                Text("Movies")
+                    .font(.largeTitle)
+                Spacer()
+                Button("Filter") {
+                    sheetType = .filter
+                }
+            }
+            MovieListView(filterOption: filterOption)
             Text("Actors")
                 .font(.largeTitle)
             ActorListView(actors: actors)
@@ -58,11 +65,6 @@ struct MovieListScreen: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Add Movie") {
                     sheetType = .addMovie
-                }
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("Filter") {
-                    sheetType = .filter
                 }
             }
         }
@@ -86,7 +88,7 @@ struct MovieListScreen: View {
                     self.sheetType = nil
                 }
             case .filter:
-                Text("Filterd items")
+                FilterSelectionScreen(filterOption: $filterOption)
             }
         }
     }

@@ -16,6 +16,7 @@
 		12736F8C30B47F250096DAB1 /* ActorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12736F8B30B47F250096DAB1 /* ActorCellView.swift */; };
 		12736F8E30B488E80096DAB1 /* ActorDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12736F8D30B488E80096DAB1 /* ActorDetailsScreen.swift */; };
 		12736F9030B489A40096DAB1 /* MovieSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12736F8F30B489A40096DAB1 /* MovieSelectionView.swift */; };
+		12736F9230B5CC120096DAB1 /* FilterSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12736F9130B5CC060096DAB1 /* FilterSelectionScreen.swift */; };
 		127F059430B024A600F0B97C /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F059330B024A300F0B97C /* Movie.swift */; };
 		127F059C30B025F400F0B97C /* AddMovieScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F059B30B025F400F0B97C /* AddMovieScreen.swift */; };
 		127F059E30B0344A00F0B97C /* MovieListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F059D30B0344A00F0B97C /* MovieListScreen.swift */; };
@@ -38,6 +39,7 @@
 		12736F8B30B47F250096DAB1 /* ActorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCellView.swift; sourceTree = "<group>"; };
 		12736F8D30B488E80096DAB1 /* ActorDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDetailsScreen.swift; sourceTree = "<group>"; };
 		12736F8F30B489A40096DAB1 /* MovieSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSelectionView.swift; sourceTree = "<group>"; };
+		12736F9130B5CC060096DAB1 /* FilterSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionScreen.swift; sourceTree = "<group>"; };
 		127F059330B024A300F0B97C /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		127F059B30B025F400F0B97C /* AddMovieScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieScreen.swift; sourceTree = "<group>"; };
 		127F059D30B0344A00F0B97C /* MovieListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListScreen.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		8DD472972A2FBADB00BE40A8 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				12736F9130B5CC060096DAB1 /* FilterSelectionScreen.swift */,
 				127F059D30B0344A00F0B97C /* MovieListScreen.swift */,
 				127F059B30B025F400F0B97C /* AddMovieScreen.swift */,
 				127F05A230B0897D00F0B97C /* MovieDetailsScreen.swift */,
@@ -216,6 +219,7 @@
 			files = (
 				8DD4729C2A2FBB3B00BE40A8 /* String+Extensions.swift in Sources */,
 				12736F8830B4548D0096DAB1 /* ActorListView.swift in Sources */,
+				12736F9230B5CC120096DAB1 /* FilterSelectionScreen.swift in Sources */,
 				12736F8E30B488E80096DAB1 /* ActorDetailsScreen.swift in Sources */,
 				12736F9030B489A40096DAB1 /* MovieSelectionView.swift in Sources */,
 				127F05A130B07E8400F0B97C /* MovieListView.swift in Sources */,
