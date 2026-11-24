@@ -41,9 +41,10 @@ struct AddMovieScreen: View {
                     let movie = Movie(title: title, year: year ?? 0)
                     movie.actors = Array(selectedActors)
                     
-                    selectedActors.forEach { actor in
-                        actor.movies.append(movie)
-                    }
+                    //NOT Mandatory
+//                    selectedActors.forEach { actor in
+//                        actor.movies.append(movie)
+//                    }
                     
                     modelContext.insert(movie)
                     do {
