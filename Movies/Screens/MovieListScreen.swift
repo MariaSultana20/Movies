@@ -8,14 +8,23 @@
 import SwiftUI
 import SwiftData
 
+enum Sheet: Identifiable {
+    var id: Int {
+        hashValue
+    }
+    
+    case addMovie
+    case addActor
+    case filter
+}
+
 struct MovieListScreen: View {
     @Environment(\.modelContext) private var modelContext
 
     @Query(sort: \Movie.title, order: .forward) private var movies: [Movie]
     @Query(sort: \Actor.name, order: .forward) private var actors: [Actor]
     
-    @State private var isAddActorPresented: Bool = false
-    @State private var isAddMovieScreenPresented: Bool = false
+    @State private var sheetType: Sheet?
     @State private var actorName: String = ""
     
     private func saveActor() {
@@ -43,32 +52,41 @@ struct MovieListScreen: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading){
                 Button("Add Actor") {
-                    isAddActorPresented = true
+                    sheetType = .addActor
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Add Movie") {
-                    isAddMovieScreenPresented = true
+                    sheetType = .addMovie
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Filter") {
+                    sheetType = .filter
                 }
             }
         }
-        .sheet(isPresented: $isAddMovieScreenPresented) {
-            NavigationStack {
-                AddMovieScreen()
-            }
-        }
-        .sheet(isPresented: $isAddActorPresented) {
-            Text("Add Actor")
-                .font(.largeTitle)
-                .presentationDetents([.fraction(0.25)])
-            
-            TextField("Actor Name", text: $actorName)
-                .textFieldStyle(.roundedBorder)
-                .padding()
-            
-            Button("Save") {
-                isAddActorPresented = false
-                saveActor()
+        .sheet(item: $sheetType){ sheetType in
+            switch sheetType {
+            case .addMovie:
+                NavigationStack {
+                    AddMovieScreen()
+                }
+            case .addActor:
+                Text("Add Actor")
+                    .font(.largeTitle)
+                    .presentationDetents([.fraction(0.25)])
+                
+                TextField("Actor Name", text: $actorName)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+                
+                Button("Save") {
+                    saveActor()
+                    self.sheetType = nil
+                }
+            case .filter:
+                Text("Filterd items")
             }
         }
     }
