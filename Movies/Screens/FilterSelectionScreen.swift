@@ -10,6 +10,7 @@ import SwiftUI
 enum FilterOption {
     case title(String)
     case reviewCount(Int)
+    case actorCount(Int)
     case none
 }
 
@@ -17,6 +18,7 @@ struct FilterSelectionScreen: View {
     @Environment(\.dismiss) private var dismiss
     @State private var movieTitle = ""
     @State private var numberOfReviews: Int?
+    @State private var numberOfActors: Int?
     @Binding var filterOption: FilterOption
     
     var body: some View {
@@ -32,6 +34,13 @@ struct FilterSelectionScreen: View {
                 TextField("Number of reviews", value: $numberOfReviews, format: .number)
                 Button("Search") {
                     filterOption = .reviewCount(numberOfReviews ?? 0)
+                    dismiss()
+                }
+            }
+            Section("Filter by number of actors") {
+                TextField("Number of actors", value: $numberOfActors, format: .number)
+                Button("Search") {
+                    filterOption = .actorCount(numberOfActors ?? 0)
                     dismiss()
                 }
             }
