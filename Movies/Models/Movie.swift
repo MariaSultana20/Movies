@@ -13,6 +13,14 @@ final class Movie {
     var title: String
     var year: Int
     
+    var reviewCount: Int {
+        reviews?.count ?? 0
+    }
+    
+    var actorCount: Int {
+        actors.count
+    }
+    
     @Relationship(deleteRule: .cascade, inverse: \Review.movie)
     var reviews: [Review]? = []
     @Relationship(deleteRule: .noAction, inverse: \Actor.movies)
