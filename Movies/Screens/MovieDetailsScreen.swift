@@ -39,8 +39,8 @@ struct MovieDetailsScreen: View {
                     Image(systemName: "plus")
                 }
                 
-                if let reviews = movie.reviews, !reviews.isEmpty {
-                    ReviewListView(reviews: reviews)
+                if movie.reviews.isEmpty {
+                    ReviewListView(reviews: movie.reviews)
                 } else {
                     ContentUnavailableView {
                         Text("No reviews yet")

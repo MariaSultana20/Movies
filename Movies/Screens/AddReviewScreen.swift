@@ -36,7 +36,7 @@ struct AddReviewScreen: View {
                 Button("Save") {
                     let review = Review(subject: subject, body: description)
                     review.movie = movie
-                    movie.reviews?.append(review)
+                    movie.reviews.append(review)
                     
                     modelContext.insert(review)
                     do {

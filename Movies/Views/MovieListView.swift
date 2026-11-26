@@ -18,6 +18,8 @@ struct MovieListView: View {
         switch filterOption {
         case .title(let movieTitle):
             _movies = Query(filter: #Predicate<Movie> { $0.title.contains(movieTitle) })
+        case .reviewCount(let reviewCount):
+            _movies = Query(filter: #Predicate<Movie> { $0.reviews.count >= reviewCount })
         case .none:
             _movies = Query()
         }
