@@ -71,8 +71,8 @@
 		1268295730B868DE00B35D65 /* Schema Versions */ = {
 			isa = PBXGroup;
 			children = (
-				1268295A30B86D5A00B35D65 /* MovieMigrationPlan.swift */,
 				1268295830B868F400B35D65 /* MoviesSchemaVersions.swift */,
+				1268295A30B86D5A00B35D65 /* MovieMigrationPlan.swift */,
 			);
 			path = "Schema Versions";
 			sourceTree = "<group>";

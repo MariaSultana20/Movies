@@ -38,7 +38,7 @@ struct AddMovieScreen: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Save") {
-                    let movie = Movie(title: title, year: year ?? 0)
+                    let movie = Movie(name: title, year: year ?? 0)
                     movie.actors = Array(selectedActors)
                     
                     //NOT Mandatory

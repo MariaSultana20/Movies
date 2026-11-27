@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct MovieSelectionView: View {
-    @Query(sort: \Movie.title, order: .forward) private var movies: [Movie]
+    @Query(sort: \Movie.name, order: .forward) private var movies: [Movie]
     @Binding var selectedMovies: Set<Movie>
     
     var body: some View {
@@ -17,7 +17,7 @@ struct MovieSelectionView: View {
             let isSelected = selectedMovies.contains(movie)
             HStack {
                 Image(systemName: isSelected ? "checkmark.square": "square")
-                Text(movie.title)
+                Text(movie.name)
             }
             .onTapGesture {
                 if isSelected {
