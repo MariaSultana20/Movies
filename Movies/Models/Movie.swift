@@ -14,7 +14,11 @@ import SwiftData
 final class Movie {
     @Attribute(.unique, originalName: "title") var name: String
     var year: Int
-    var genre: Genre
+    var genreId: Int
+    
+    var genre: Genre {
+        Genre(rawValue: genreId)!
+    }
     
     var reviewCount: Int {
         reviews.count
@@ -32,6 +36,6 @@ final class Movie {
     init(name: String, year: Int, genre: Genre) {
         self.name = name
         self.year = year
-        self.genre = genre
+        self.genreId = genre.id
     }
 }

@@ -11,6 +11,7 @@ enum FilterOption {
     case title(String)
     case reviewCount(Int)
     case actorCount(Int)
+    case genre(Genre?)
     case none
 }
 
@@ -19,6 +20,7 @@ struct FilterSelectionScreen: View {
     @State private var movieTitle = ""
     @State private var numberOfReviews: Int?
     @State private var numberOfActors: Int?
+    @State private var genre: Genre?
     @Binding var filterOption: FilterOption
     
     var body: some View {
@@ -41,6 +43,17 @@ struct FilterSelectionScreen: View {
                 TextField("Number of actors", value: $numberOfActors, format: .number)
                 Button("Search") {
                     filterOption = .actorCount(numberOfActors ?? 0)
+                    dismiss()
+                }
+            }
+            Section("Filter by genre") {
+                Picker("Select a Genre", selection: $genre) {
+                    ForEach(Genre.allCases) { genre in
+                        Text(genre.name).tag(genre)
+                    }
+                }
+                Button("Search") {
+                    filterOption = .genre(genre)
                     dismiss()
                 }
             }
