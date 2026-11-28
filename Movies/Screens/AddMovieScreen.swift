@@ -15,7 +15,7 @@ struct AddMovieScreen: View {
     @Query(sort: \Actor.name, order: .forward) private var actors: [Actor]
     
     @State var title: String = ""
-    @State var year: Int?
+    @State var year: Int = Calendar.current.component(.year, from: .now)
     @State private var selectedActors: Set<Actor> = []
     
     private var isFormValid: Bool {
@@ -38,7 +38,7 @@ struct AddMovieScreen: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Save") {
-                    let movie = Movie(name: title, year: year ?? 0)
+                    let movie = Movie(name: title, year: year, genra: .action)
                     movie.actors = Array(selectedActors)
                     
                     //NOT Mandatory
@@ -61,7 +61,7 @@ struct AddMovieScreen: View {
 
 #Preview {
     NavigationStack {
-        AddMovieScreen()
+        AddMovieScreen(year: 2000)
             .modelContainer(for: [Movie.self])
     }
 }

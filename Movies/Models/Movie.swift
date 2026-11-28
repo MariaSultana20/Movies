@@ -8,4 +8,30 @@
 import Foundation
 import SwiftData
 
-typealias Movie = MoviesSchemaV3.Movie
+//typealias Movie = MoviesSchemaV3.Movie
+
+@Model
+final class Movie {
+    @Attribute(.unique, originalName: "title") var name: String
+    var year: Int
+    var genra: Genre
+    
+    var reviewCount: Int {
+        reviews.count
+    }
+    
+    var actorCount: Int {
+        actors.count
+    }
+    
+    @Relationship(deleteRule: .cascade, inverse: \Review.movie)
+    var reviews: [Review] = []
+    @Relationship(deleteRule: .noAction, inverse: \Actor.movies)
+    var actors: [Actor] = []
+    
+    init(name: String, year: Int, genra: Genre) {
+        self.name = name
+        self.year = year
+        self.genra = genra
+    }
+}

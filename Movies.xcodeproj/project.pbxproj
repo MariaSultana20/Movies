@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		124F31C430B9CE890060A931 /* Genra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F31C330B9CE860060A931 /* Genra.swift */; };
 		1268295930B8690700B35D65 /* MoviesSchemaVersions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1268295830B868F400B35D65 /* MoviesSchemaVersions.swift */; };
 		1268295B30B86D6200B35D65 /* MovieMigrationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1268295A30B86D5A00B35D65 /* MovieMigrationPlan.swift */; };
 		12736F7E30B40B230096DAB1 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12736F7D30B40B230096DAB1 /* Review.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		124F31C330B9CE860060A931 /* Genra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genra.swift; sourceTree = "<group>"; };
 		1268295830B868F400B35D65 /* MoviesSchemaVersions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSchemaVersions.swift; sourceTree = "<group>"; };
 		1268295A30B86D5A00B35D65 /* MovieMigrationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMigrationPlan.swift; sourceTree = "<group>"; };
 		12736F7D30B40B230096DAB1 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		8DD472942A2FB9E700BE40A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				124F31C330B9CE860060A931 /* Genra.swift */,
 				127F059330B024A300F0B97C /* Movie.swift */,
 				12736F7D30B40B230096DAB1 /* Review.swift */,
 				12736F8330B4343B0096DAB1 /* Actor.swift */,
@@ -250,6 +253,7 @@
 				127F05A330B0897D00F0B97C /* MovieDetailsScreen.swift in Sources */,
 				127F059430B024A600F0B97C /* Movie.swift in Sources */,
 				12736F8030B40E980096DAB1 /* AddReviewScreen.swift in Sources */,
+				124F31C430B9CE890060A931 /* Genra.swift in Sources */,
 				12736F8C30B47F250096DAB1 /* ActorCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
