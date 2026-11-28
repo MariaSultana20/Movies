@@ -17,43 +17,40 @@ enum FilterOption {
 
 struct FilterSelectionScreen: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var movieTitle = ""
-    @State private var numberOfReviews: Int?
-    @State private var numberOfActors: Int?
-    @State private var genre: Genre?
-    @Binding var filterOption: FilterOption
+
+    @Binding var filterSelectionConfig: FilterSelectionConfig
     
     var body: some View {
         Form {
             Section("Filter by movie title") {
-                TextField("Movie title", text: $movieTitle)
+                TextField("Movie title", text: $filterSelectionConfig.movieTitle)
                 Button("Search") {
-                    filterOption = .title(movieTitle)
+                    filterSelectionConfig.filter = .title(filterSelectionConfig.movieTitle)
                     dismiss()
                 }
             }
             Section("Filter by number of reviews") {
-                TextField("Number of reviews", value: $numberOfReviews, format: .number)
+                TextField("Number of reviews", value: $filterSelectionConfig.numberOfReviews, format: .number)
                 Button("Search") {
-                    filterOption = .reviewCount(numberOfReviews ?? 0)
+                    filterSelectionConfig.filter = .reviewCount(filterSelectionConfig.numberOfReviews ?? 0)
                     dismiss()
                 }
             }
             Section("Filter by number of actors") {
-                TextField("Number of actors", value: $numberOfActors, format: .number)
+                TextField("Number of actors", value: $filterSelectionConfig.numberOfActors, format: .number)
                 Button("Search") {
-                    filterOption = .actorCount(numberOfActors ?? 0)
+                    filterSelectionConfig.filter = .actorCount(filterSelectionConfig.numberOfActors ?? 0)
                     dismiss()
                 }
             }
             Section("Filter by genre") {
-                Picker("Select a Genre", selection: $genre) {
+                Picker("Select a Genre", selection: $filterSelectionConfig.genre) {
                     ForEach(Genre.allCases) { genre in
                         Text(genre.name).tag(genre)
                     }
                 }
                 Button("Search") {
-                    filterOption = .genre(genre)
+                    filterSelectionConfig.filter = .genre(filterSelectionConfig.genre)
                     dismiss()
                 }
             }
