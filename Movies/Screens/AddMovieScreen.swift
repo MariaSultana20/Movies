@@ -15,7 +15,8 @@ struct AddMovieScreen: View {
     @Query(sort: \Actor.name, order: .forward) private var actors: [Actor]
     
     @State var title: String = ""
-    @State var year: Int = Calendar.current.component(.year, from: .now)
+    @State var year: Int?
+    @State private var genre: Genre = .action
     @State private var selectedActors: Set<Actor> = []
     
     private var isFormValid: Bool {
@@ -23,6 +24,11 @@ struct AddMovieScreen: View {
     }
     var body: some View {
         Form {
+            Picker("Select Genre", selection: $genre) {
+                ForEach(Genre.allCases) { genre in
+                    Text(genre.name).tag(genre)
+                }
+            }
             TextField("Movie title", text: $title)
             TextField("Release year", value: $year, format: .number)
             Section("Select Actors") {
@@ -38,7 +44,11 @@ struct AddMovieScreen: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Save") {
-                    let movie = Movie(name: title, year: year, genra: .action)
+                    let movie = Movie(
+                        name: title,
+                        year: year ?? Calendar.current.component(.year, from: Date()),
+                        genre: genre
+                    )
                     movie.actors = Array(selectedActors)
                     
                     //NOT Mandatory
